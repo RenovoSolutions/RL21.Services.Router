@@ -8,3 +8,17 @@ serve.config(gulp);
 test.config(gulp);
 
 gulp.task('default', ['build']);
+
+var runSequence = require('run-sequence');
+
+gulp.task('tc', function(done) {
+    runSequence('build',
+                'test.tc',
+                done);
+});
+
+gulp.task('run', function(done) {
+    runSequence('build',
+                'test',
+                done);
+});
