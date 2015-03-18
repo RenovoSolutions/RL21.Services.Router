@@ -1,0 +1,6 @@
+{
+    env: 'renovo.localhost',
+    routes: {
+        '*': 'localhost:9000',
+    },
+},

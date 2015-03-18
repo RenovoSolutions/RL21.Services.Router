@@ -1,0 +1,6 @@
+{
+    env: 'www.renovolive.com',
+    routes: {
+        '*': 'rabbit01.rl.renovolive.com',
+    },
+},
