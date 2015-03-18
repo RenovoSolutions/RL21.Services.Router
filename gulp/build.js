@@ -1,11 +1,8 @@
 var runSequence = require('run-sequence');
 
 var del = require('del');
-
-var ts = require('gulp-typescript');
 var merge = require('merge2');
-var sourcemaps = require('gulp-sourcemaps');
-var concat = require('gulp-concat');
+var compile = require('./compile');
 
 exports.config = function(gulp) {
     gulp.task('build', function(done) {
@@ -20,22 +17,11 @@ exports.config = function(gulp) {
     });
 
     gulp.task('tsc', function() {
-        var tsFiles = gulp.src(['./source/**/*.ts', './typings/**/*.d.ts']);
-        var compiler = ts({
-            declarationFiles: true,
-            noExternalResolve: true,
-            module: 'commonjs',
-            target: 'ES5',
-            sortOutput: true,
-        });
-        var tsResult = tsFiles.pipe(sourcemaps.init({ debug: true }))
-                              .pipe(compiler);
-
+        var ts = compile.typescript(gulp.src(['./source/**/*.ts', './typings/**/*.d.ts']));
+        
         return merge([
-            tsResult.js.pipe(sourcemaps.write())
-                       .pipe(gulp.dest('./release')),
-            
-            tsResult.dts.pipe(gulp.dest('./release/typings')),
+            ts.js.pipe(gulp.dest('./release')),
+            ts.dts.pipe(gulp.dest('./release/typings')),
         ]);
     });
 
