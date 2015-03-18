@@ -28,33 +28,4 @@ exports.config = function(gulp) {
     function getTests(gulp) {
         return gulp.src('./tests/**/*.js', { read: false })
     }
-    
-//    gulp.task('debug', function(done) {
-//        karma.start({
-//            configFile: __dirname + '/../tests/karma.conf.js',
-//            singleRun: false,
-//            autoWatch: true,
-//            reporters: [],
-//        }, done);
-//    });
 };
-
-//var karma = require('karma').server;
-//
-//exports.config = function(gulp) {
-//    
-//    gulp.task('test', function(done) {
-//        karma.start({
-//            configFile: __dirname + '/../tests/karma.conf.js',
-//        }, done);
-//    });
-//
-//    gulp.task('debug', function(done) {
-//        karma.start({
-//            configFile: __dirname + '/../tests/karma.conf.js',
-//            singleRun: false,
-//            autoWatch: true,
-//            reporters: [],
-//        }, done);
-//    });
-//};
