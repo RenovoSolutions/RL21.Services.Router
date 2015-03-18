@@ -1,0 +1,13 @@
+
+# Visual Studio
+/bin/
+/obj/
+
+# NodeJS
+/node_modules/
+
+# Typescript DefinitivelyTyped
+/typings/
+
+# Build target folder
+/release/
