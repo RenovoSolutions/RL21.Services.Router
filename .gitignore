@@ -2,6 +2,8 @@
 # Visual Studio
 /bin/
 /obj/
+*.csproj.user
+*.suo
 
 # NodeJS
 /node_modules/
