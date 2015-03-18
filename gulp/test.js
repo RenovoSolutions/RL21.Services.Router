@@ -3,17 +3,19 @@
 var mocha = require('gulp-mocha');
 
 var npm = require('npm');
-
 var nodeDebug = require('node-inspector/bin/node-debug');
 
 exports.config = function(gulp) {
-    
     gulp.task('test', function() {
-        return getTests(gulp).pipe(mocha({ reporter: 'spec' }));
+        return runTests({ 
+            reporter: 'spec', 
+        });
     });
-
+    
     gulp.task('test.tc', function() {
-        return getTests(gulp).pipe(mocha({ reporter: 'mocha-teamcity-reporter' }));
+        return runTests({ 
+            reporter: 'mocha-teamcity-reporter',
+        });
     });
         
     gulp.task('test.debug', function() {
@@ -25,7 +27,11 @@ exports.config = function(gulp) {
         nodeDebug();
     });
     
-    function getTests(gulp) {
-        return gulp.src('./tests/**/*.js', { read: false })
+    function runTests(mochaSettings, done) {
+        return getTests().pipe(mocha(mochaSettings));
+    }
+    
+    function getTests() {
+        return gulp.src('./tests/**/*.js', { read: false });
     }
 };
