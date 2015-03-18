@@ -8,10 +8,11 @@ var sourcemaps = require('gulp-sourcemaps');
 var concat = require('gulp-concat');
 
 exports.config = function(gulp) {
-    gulp.task('build', function() {
+    gulp.task('build', function(done) {
         runSequence('clean',
                     'tsc', 
-                    'copy');
+                    'copy',
+                    done);
     });
     
     gulp.task('clean', function(done) {
